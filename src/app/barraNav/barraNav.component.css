@@ -1,0 +1,27 @@
+nav{
+  background-color: var(--bs-emphasis-color) !important;
+  }
+  .nav-item{
+    padding: 0 10px 0 10px;
+  }
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    display: inline-block;
+  }
+
+  .general{
+    color: white !important;
+    font-size: 25px!important;
+    font-weight: bolder!important;
+  }
+  .name-colegio{
+    font-size: 30px;
+    font-weight: bold;
+  }
+.docente{
+  color: rgb(186, 87, 37) !important;
+  font-size: 25px!important;
+}

@@ -1,0 +1,24 @@
+<app-barraNav></app-barraNav>
+<h1 class="text-primary text-center my-4">Control de Cursos por cada Profesor</h1>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered table-sm"> <!-- Agrega table-sm aquí -->
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">ID CURSO</th>
+          <th scope="col">Nombre del Curso</th>
+          <th scope="col">ID del Profesor</th>
+          <th scope="col">Nombre y Apellidos del Profesor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let curso of cursos">
+          <td>{{ curso.id_curso }}</td>
+          <td>{{ curso.nombre_curso }}</td>
+          <td>{{ curso.id_profesor }}</td>
+          <td>{{ curso.nombre }} {{ curso.apellido }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

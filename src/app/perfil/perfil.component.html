@@ -1,0 +1,79 @@
+<app-header></app-header>
+
+<div class="container py-5" style="padding-left: 100px;">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+            <!-- Tarjeta de bienvenida -->
+            <div class="card mb-5 shadow-lg border-0 rounded-4">
+                <div class="card-body text-center  text-white rounded-top-4" style="background:#0A7075 !important;">
+                    <h2 class="my-3">¡Bienvenido(a), {{ user?.nombre }}!</h2>
+                    <p class="lead mb-0">Especialista en {{ user?.profesion }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de información del usuario -->
+        <div class="col-lg-10 col-md-12">
+            <div class="card mb-5 shadow border-0 rounded-4">
+                <div class="card-header text-center bg-light rounded-top-4">
+                    <h4 class="mb-0 fw-bold text-secondary">Información del Usuario</h4>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Información del usuario -->
+                    <div class="row align-items-center mb-4">
+                        <div class="col-sm-3 text-center">
+                            <i class="bi bi-person-fill fs-3 text-primary"></i>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="mb-0 fw-bold fs-5">Nombres y Apellidos</p>
+                            <p class="text-muted fs-6">{{ user?.nombre }} {{ user?.apellido }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row align-items-center mb-4">
+                        <div class="col-sm-3 text-center">
+                            <i class="bi bi-envelope-fill fs-3 text-danger"></i>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="mb-0 fw-bold fs-5">Email Corporativo</p>
+                            <p class="text-muted fs-6">{{ user?.usuario }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row align-items-center mb-4">
+                        <div class="col-sm-3 text-center">
+                            <i class="bi bi-telephone-fill fs-3 text-success"></i>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="mb-0 fw-bold fs-5">Número de Celular</p>
+                            <p class="text-muted fs-6">{{ user?.celular }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row align-items-center mb-4">
+                        <div class="col-sm-3 text-center">
+                            <i class="bi bi-stack fs-3 text-warning"></i>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="mb-0 fw-bold fs-5">Código de Docente</p>
+                            <p class="text-muted fs-6">{{ user?.codigo_docente }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row align-items-center">
+                        <div class="col-sm-3 text-center">
+                            <i class="bi bi-book-fill fs-3 text-info"></i>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="mb-0 fw-bold fs-5">Número de Cursos</p>
+                            <p class="text-muted fs-6">{{ user?.num_cursos }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Agrega el enlace a Bootstrap Icons -->
+

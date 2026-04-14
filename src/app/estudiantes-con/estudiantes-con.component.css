@@ -1,0 +1,7 @@
+.btn-custom-orange {
+  background-color: #FFA500; /* Color naranja */
+  color: white; /* Texto blanco */
+}
+.btn-custom-orange:hover {
+  background-color: #FF8C00; /* Color naranja más oscuro al pasar el mouse */
+}

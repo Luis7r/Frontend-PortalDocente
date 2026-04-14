@@ -1,0 +1,47 @@
+nav {
+  background-color: white !important;
+  margin-left: 88px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: inline-block;
+}
+
+.general {
+  color: black !important;
+  font-size: 20px!important;
+  font-weight: bolder!important;
+}
+
+.ss {
+  color: white !important;
+  font-size: 20px!important;
+}
+
+
+.nav-link.active {
+  background-color: #1e40af; /* Cambia el color de fondo cuando el enlace es activo */
+  color: #fff; /* Cambia el color del texto cuando está activo */
+}
+
+/* Cambia el color de fondo para los íconos */
+.nav-item .nav-link:hover {
+  background-color: #374151;
+}
+
+/* Estilo adicional para la imagen circular */
+img.rounded-circle {
+  border: 2px solid #fff;  /* Borde blanco alrededor de la imagen */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);  /* Sombra sutil para resaltar */
+}
+
+.sidebarr {
+  background-color: #000f37 !important;
+}
+
+

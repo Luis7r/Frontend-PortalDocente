@@ -1,0 +1,12 @@
+.accordion-button:not(.collapsed) {
+  background-color: #d4e4fb;
+  color: #0d6efd;
+}
+
+.accordion-button::after {
+  filter: invert(40%) sepia(100%) saturate(5000%) hue-rotate(190deg) brightness(90%) contrast(80%);
+}
+
+.accordion-item {
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,72 @@
+<body>
+  <section class="vh-100" style="background: linear-gradient(45deg,  #2575fc);">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card shadow-lg" style="border-radius: 1.5rem; background: #fff;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="imagenes/Escudo.jpg" alt="login form" class="img-fluid rounded-start" />
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+                  <form id="loginForm" [formGroup]="formUser" (ngSubmit)="Ingresar()">
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <span class="h1 fw-bold mb-0 text-primary" style="color:#0c5ce8 !important;">PORTAL DEL DOCENTE</span>
+                    </div>
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; color: #555;">Inicio de sesión</h5>
+
+                    <div class="form-outline mb-4">
+                      <input
+                        type="email"
+                        placeholder="Correo electrónico"
+                        formControlName="correo"
+                        class="form-control form-control-lg"
+                        [ngClass]="{ 'is-invalid': correo.invalid && correo.dirty }"
+                      />
+                      <div *ngIf="correo.invalid && correo.dirty" class="invalid-feedback">
+                        <small *ngIf="correo.errors?.['required']">El correo es obligatorio.</small>
+                        <small *ngIf="correo.errors?.['email']">El correo no es válido.</small>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input
+                        type="password"
+                        placeholder="Contraseña"
+                        formControlName="clave"
+                        class="form-control form-control-lg"
+                        [ngClass]="{ 'is-invalid': clave.dirty && clave.invalid }"
+                      />
+                      <div *ngIf="clave.dirty && clave.invalid" class="invalid-feedback">
+                        La clave es obligatoria.
+                      </div>
+                    </div>
+
+                    <!-- Botón de submit -->
+                    <div class="pt-1 mb-4">
+                      <button
+                        class="btn btn-primary btn-lg btn-block fw-bold w-100"
+                        type="submit"
+                        [disabled]="formUser.invalid"
+                        style="transition: all 0.3s ease;"
+                      >
+                        INGRESAR
+                      </button>
+                    </div>
+
+
+                    <!-- Mensaje de error global -->
+                    <div *ngIf="errorMessage" class="text-danger mt-3">
+                      {{ errorMessage }}
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

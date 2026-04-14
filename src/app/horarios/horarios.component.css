@@ -1,0 +1,54 @@
+/* Personalización de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px 20px;
+}
+
+th {
+  background-color: #09519d; /* Color azul brillante para la cabecera */
+  color: white;
+  font-size: 20px;
+}
+
+td {
+  background-color: #f8f9fa;
+  vertical-align: middle;
+  font-size: 18px;
+}
+
+/* Mejoras en la tabla */
+.table-bordered {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+/* Estilos en el hover */
+.table-hover tbody tr:hover {
+  background-color: #e9ecef; /* Resaltado al pasar el mouse */
+}
+
+/* Estilos responsivos */
+.table-responsive {
+  overflow-x: auto; /* Permite el desplazamiento en pantallas pequeñas */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Estilo para los mensajes de error */
+.text-danger {
+  color: #dc3545;
+}
+
+/* Mejorar la legibilidad */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%;
+}

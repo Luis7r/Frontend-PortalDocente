@@ -1,0 +1,25 @@
+nav{
+  background-color: var(--bs-emphasis-color) !important;
+  }
+  .nav-item{
+    padding: 0 10px 0 10px;
+  }
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    display: inline-block;
+  }
+
+  .general{
+    color: white ;
+    font-size: 25px!important;
+    font-weight: bolder!important;
+  }
+  .name-colegio{
+    font-size: 30px;
+    font-weight: bold;
+    color: white
+  }
+

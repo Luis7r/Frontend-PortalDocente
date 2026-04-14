@@ -1,0 +1,151 @@
+<app-barraNav></app-barraNav>
+<h1 class="text-center my-4">CONTROL DE DOCENTES</h1>
+
+
+
+<div class="text-center mb-4">
+  <button class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#addDocenteModal">Agregar Docente</button>
+
+  <button class="btn btn-secondary mx-2" (click)="togglePasswordVisibility()">
+    {{ showPassword ? 'Ocultar Contraseñas' : 'Mostrar Contraseñas' }}
+  </button>
+</div>
+
+
+
+
+<div class="table-responsive container">
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-primary text-center">
+      <tr>
+        <th>N°</th>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Profesión</th>
+        <th>N° de Cursos</th>
+        <th>Celular</th>
+        <th>Código Docente</th>
+        <th>Usuario</th>
+        <th>Contraseña</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let docente of docentes" class="table-row">
+        <td>{{ docente.id_profesor }}</td>
+        <td>{{ docente.dni }}</td>
+        <td>{{ docente.nombre }}</td>
+        <td>{{ docente.apellido }}</td>
+        <td>{{ docente.profesion }}</td>
+        <td>{{ docente.num_cursos }}</td>
+        <td>{{ docente.celular }}</td>
+        <td>{{ docente.codigo_docente }}</td>
+        <td>{{ docente.usuario }}</td>
+        <td>{{ showPassword ? docente.contrasena : '*****' }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="eliminarDocente(docente.dni)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" id="addDocenteModal" tabindex="-1" aria-labelledby="addDocenteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Docente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="docenteForm" (ngSubmit)="addDocente()">
+          <div class="mb-3">
+            <input type="text" placeholder="DNI" formControlName="dni" class="form-control" />
+            <div *ngIf="docenteForm.get('dni')?.dirty && docenteForm.get('dni')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('dni') }}
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" placeholder="Nombre" formControlName="nombre" class="form-control" />
+            <div *ngIf="docenteForm.get('nombre')?.dirty  && docenteForm.get('nombre')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('nombre') }}
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" placeholder="Apellido" formControlName="apellido" class="form-control" />
+            <div *ngIf="docenteForm.get('apellido')?.dirty  && docenteForm.get('apellido')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('apellido') }}
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" placeholder="Profesión" formControlName="profesion" class="form-control" />
+            <div *ngIf="docenteForm.get('profesion')?.dirty  && docenteForm.get('profesion')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('profesion') }}
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" placeholder="N° de Cursos" formControlName="num_cursos" class="form-control" />
+            <div *ngIf="docenteForm.get('num_cursos')?.dirty  && docenteForm.get('num_cursos')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('num_cursos') }}
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" placeholder="N° de Celular" formControlName="celular" class="form-control" />
+            <div *ngIf="docenteForm.get('celular')?.dirty && docenteForm.get('celular')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('celular') }}
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" placeholder="Codigo Docente" formControlName="codigo_docente" class="form-control" />
+            <div *ngIf="docenteForm.get('codigo_docente')?.dirty && docenteForm.get('codigo_docente')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('codigo_docente') }}
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" placeholder="Usuario" formControlName="usuario" class="form-control" />
+            <div *ngIf="docenteForm.get('usuario')?.dirty  && docenteForm.get('usuario')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('usuario') }}
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="password" placeholder="Contraseña" formControlName="contrasena" class="form-control" />
+            <div *ngIf="docenteForm.get('contrasena')?.dirty  && docenteForm.get('contrasena')?.invalid">
+              <small class="text-danger">
+                {{ getValidationMessage('contrasena') }}
+              </small>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary me-4" [disabled]="docenteForm.invalid">
+              Guardar
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

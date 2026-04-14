@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand text-a">
+      <img src="../imagenes/m.svg" alt="Logo" width="80" height="60" class="d-inline-block align-text-top logo">
+      <span class="name-colegio">GESTION DE DATOS</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="general nav-link text-a" routerLink="/ControlEstudiantes" routerLinkActive="active" aria-current="page">ESTUDIANTES</a>
+        </li>
+        <li class="nav-item">
+          <a class="general nav-link text-a" routerLink="/ControlDocentes" routerLinkActive="active">DOCENTES</a>
+        </li>
+        <li class="nav-item">
+          <a class="general nav-link text-a" routerLink="/ControlCursos" routerLinkActive="active">CURSOS</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Botón de Salir -->
+<button class="btn position-fixed bottom-0 end-0 mb-3 me-3" style="background-color: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#salir" title="Salir">
+  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+  </svg>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="salir" tabindex="-1" aria-labelledby="salirLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="salirLabel">¿Estás seguro que deseas salir?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Se cerrará la sesión actual.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <a class="btn btn-danger" routerLink="/login">Salir</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+
+.container {
+  background-color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 100px !important;
+}
+
+.carousel {
+  margin-bottom: 4rem;
+}
+
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-caption p {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-item {
+  height: 27rem; /* Altura uniforme para todas las imágenes del carrusel */
+  position: relative;
+}
+
+.carousel-item img {
+  object-fit: cover; /* Asegura que las imágenes se adapten al contenedor sin distorsionarse */
+  height: 100%;
+  width: 100%;
+}
+
+.featurette-divider {
+  margin: 3rem 0;
+}
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}

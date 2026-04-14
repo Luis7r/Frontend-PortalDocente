@@ -1,0 +1,28 @@
+.img-fluid{
+  border-radius: 1rem 0 0 1rem;
+  height: 100%;
+}
+
+
+.form-control {
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+.form-control:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+.btn-primary:hover {
+  background-color: #1a63b4;
+  box-shadow: 0 0 10px rgba(37, 117, 252, 0.5);
+}
+.card-body {
+  background-color: #f8f9fa;
+  border-radius: 1rem;
+}
+.card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.invalid-feedback {
+  font-size: 0.9rem;
+}
