@@ -1,0 +1,201 @@
+.main-content{
+
+    margin-left:110px;
+
+}
+
+.welcome-card{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    margin-bottom:30px;
+
+    border-left:6px solid #0A7075;
+
+}
+
+.welcome-label{
+
+    color:#6b7280;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.9rem;
+
+}
+
+.welcome-card h2{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#1f2937;
+
+}
+
+.welcome-card p{
+
+    color:#6b7280;
+
+    font-size:1.1rem;
+
+}
+
+.avatar{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    background:#eef7f7;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:auto;
+
+}
+
+.avatar i{
+
+    font-size:60px;
+
+    color:#0A7075;
+
+}
+
+.profile-card{
+
+    border:none;
+
+    border-radius:20px;
+
+}
+
+.section-title{
+
+    font-weight:700;
+
+    margin-bottom:30px;
+
+    color:#1f2937;
+
+}
+
+.info-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:16px;
+
+    background:#fafafa;
+
+    transition:.25s;
+
+}
+
+.info-item:hover{
+
+    background:#f3f4f6;
+
+    transform:translateY(-2px);
+
+}
+
+.info-item i{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    background:#eef7f7;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#0A7075;
+
+    font-size:24px;
+
+}
+
+.info-item small{
+
+    color:#6b7280;
+
+    display:block;
+
+    margin-bottom:4px;
+
+}
+
+.info-item h6{
+
+    margin:0;
+
+    font-size:1.05rem;
+
+    font-weight:600;
+
+    color:#1f2937;
+
+}
+
+@media(max-width:992px){
+
+    .main-content{
+
+        margin-left:0;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .welcome-card{
+
+        text-align:center;
+
+        padding:30px;
+
+    }
+
+    .avatar{
+
+        width:90px;
+
+        height:90px;
+
+    }
+
+    .avatar i{
+
+        font-size:42px;
+
+    }
+
+}

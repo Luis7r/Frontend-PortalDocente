@@ -1,27 +1,27 @@
-import { CommonModule, NgFor } from '@angular/common'; // Importar módulos comunes
-import { Component, OnInit } from '@angular/core'; // Importar decorador de componente y ciclo de vida
-import { FormsModule } from '@angular/forms'; // Importar módulo de formularios
+import { CommonModule, NgFor } from '@angular/common'; 
+import { Component, OnInit } from '@angular/core'; 
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { HeaderComponent } from '../header/header.component'; // Importar componente de cabecera
-import { Curso, CursosService } from '../services/cursos.service'; // Importar modelo y servicio de cursos
-import { DetalleCurso, DetallecursoService } from '../services/detallecurso.service'; // Importar modelo y servicio de detalle de curso
+import { HeaderComponent } from '../header/header.component';
+import { Curso, CursosService } from '../services/cursos.service';
+import { DetalleCurso, DetallecursoService } from '../services/detallecurso.service'; 
 import { LoginService } from './../services/login.service';
-declare var window: any; // Declarar variable global para uso en ventana
+declare var window: any; 
 declare var bootstrap: any;
 
 @Component({
-  selector: 'app-cursos', // Selector del componente
-  standalone: true, // Componente independiente
-  imports: [HeaderComponent, NgFor, CommonModule, FormsModule, RouterLink], // Importar módulos y componentes necesarios
-  templateUrl: './cursos.component.html', // Ruta a la plantilla HTML
-  styleUrls: ['./cursos.component.css'], // Ruta a los estilos CSS
+  selector: 'app-cursos',
+  standalone: true,
+  imports: [HeaderComponent, NgFor, CommonModule, FormsModule, RouterLink, ],
+  templateUrl: './cursos.component.html',
+  styleUrls: ['./cursos.component.css'],
 })
-export class CursosComponent implements OnInit { // Definición de la clase del componente
+export class CursosComponent implements OnInit { 
 
-  cursos: Curso[] = []; // Almacenar cursos
-  user: any; // Almacenar datos del usuario
-  estudiantes: DetalleCurso[] = []; // Almacenar detalles de estudiantes
-  selectedCursoId: number | null = null; // ID del curso seleccionado
+  cursos: Curso[] = []; 
+  user: any;
+  estudiantes: DetalleCurso[] = [];
+  selectedCursoId: number | null = null;
   successMessage: string = '';
   fechaActual: string = '';
   isFormValid: boolean = true;

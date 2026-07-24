@@ -1,34 +1,145 @@
 <app-header></app-header>
-<div style="padding-left: 100px;" class="container mt-4">
-  <div *ngIf="horarios.length > 0">
-    <h1 class=" text-center mb-4">Diciembre</h1>
-    <!-- Calendario de Horarios -->
-    <table class="table table-bordered table-striped table-hover table-responsive">
-      <thead class="thead-light">
-        <tr>
-          <th class="text-center">Hora</th>
-          <th *ngFor="let day of days" class="text-center">{{ day }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let hora of horas">
-          <td class="text-center align-middle">{{ hora }}</td>
-          <td *ngFor="let day of days" class="text-center align-middle">
-            <div *ngFor="let horario of horariosPorHora[day]?.[hora]">
-              <strong> {{ horario.ID_Curso }}° Sec.</strong><br>
-              <small>{{ horario.HoraInicio }} - {{ horario.HoraFin }}</small>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+<div class="main-content">
+
+  <div class="container-fluid py-4">
+
+    <!-- Encabezado -->
+    <div class="schedule-header shadow-sm">
+
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+
+        <div>
+          <h2 class="fw-bold mb-1">
+            <i class="bi bi-calendar3 me-2"></i>
+            Mi Horario
+          </h2>
+
+          <p class="text-muted mb-0">
+            Consulta tus horarios de clases asignados
+          </p>
+        </div>
+
+        <span class="month-badge">
+          Diciembre
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- Tabla -->
+
+    <div *ngIf="horarios.length > 0" class="card border-0 shadow-sm schedule-card">
+
+      <div class="card-body p-0">
+
+        <div class="table-responsive">
+
+          <table class="table schedule-table mb-0">
+
+            <thead>
+
+              <tr>
+
+                <th class="hora-column">
+                  Hora
+                </th>
+
+                <th
+                  *ngFor="let day of days"
+                  class="text-center">
+
+                  {{ day }}
+
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <tr *ngFor="let hora of horas">
+
+                <td class="hora-column">
+
+                  {{ hora }}
+
+                </td>
+
+                <td
+                  *ngFor="let day of days">
+
+                  <ng-container
+                    *ngFor="let horario of horariosPorHora[day]?.[hora]">
+
+                    <div class="schedule-item">
+
+                      <div class="course">
+
+                        {{ horario.ID_Curso }}° Secundaria
+
+                      </div>
+
+                      <div class="time">
+
+                        <i class="bi bi-clock"></i>
+
+                        {{ horario.HoraInicio }}
+
+                        -
+
+                        {{ horario.HoraFin }}
+
+                      </div>
+
+                    </div>
+
+                  </ng-container>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Sin datos -->
+
+    <div
+      *ngIf="horarios.length === 0"
+      class="empty-state shadow-sm">
+
+      <i class="bi bi-calendar-x"></i>
+
+      <h3>
+        No hay horarios registrados
+      </h3>
+
+      <p>
+        Actualmente no tienes horarios asignados.
+      </p>
+
+    </div>
+
+    <!-- Error -->
+
+    <div
+      *ngIf="errorMessage"
+      class="alert alert-danger mt-4">
+
+      {{ errorMessage }}
+
+    </div>
+
   </div>
 
-  <div *ngIf="horarios.length === 0">
-    <p class="text-center">No hay horarios disponibles para este profesor.</p>
-  </div>
-
-  <div *ngIf="errorMessage">
-    <p class="text-center text-danger">{{ errorMessage }}</p>
-  </div>
 </div>

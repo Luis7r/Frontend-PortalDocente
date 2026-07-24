@@ -1,12 +1,182 @@
-.accordion-button:not(.collapsed) {
-  background-color: #d4e4fb;
-  color: #0d6efd;
+.main-content{
+    margin-left:110px;
 }
 
-.accordion-button::after {
-  filter: invert(40%) sepia(100%) saturate(5000%) hue-rotate(190deg) brightness(90%) contrast(80%);
+/* Encabezado */
+
+.help-header h2{
+    font-size:2rem;
+    color:#1f2937;
 }
 
-.accordion-item {
-  margin-bottom: 1rem;
+.help-header p{
+    font-size:1rem;
+    color:#6b7280;
+}
+
+/* Accordion */
+
+.custom-accordion .accordion-item{
+
+    border:none;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    margin-bottom:18px;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.05);
+
+    background:#ffffff;
+
+}
+
+.custom-accordion .accordion-button{
+
+    background:#ffffff;
+
+    color:#1f2937;
+
+    font-size:1.15rem;
+
+    font-weight:600;
+
+    padding:22px;
+
+    box-shadow:none;
+
+}
+
+.custom-accordion .accordion-button i{
+
+    color:#2563eb;
+
+    font-size:1.35rem;
+
+}
+
+.custom-accordion .accordion-button:not(.collapsed){
+
+    background:#f8fafc;
+
+    color:#111827;
+
+}
+
+.custom-accordion .accordion-button:focus{
+
+    box-shadow:none;
+
+}
+
+.custom-accordion .accordion-button::after{
+
+    transform:scale(.9);
+
+}
+
+.custom-accordion .accordion-body{
+
+    padding:28px;
+
+    font-size:1rem;
+
+    line-height:1.8;
+
+    color:#4b5563;
+
+}
+
+/* listas */
+
+.custom-accordion ol,
+.custom-accordion ul{
+
+    padding-left:22px;
+
+}
+
+.custom-accordion li{
+
+    margin-bottom:10px;
+
+}
+
+/* Caja informativa */
+
+.info-box{
+
+    margin-top:20px;
+
+    padding:16px 18px;
+
+    border-left:4px solid #2563eb;
+
+    background:#f8fafc;
+
+    border-radius:10px;
+
+    color:#374151;
+
+}
+
+.info-box i{
+
+    color:#2563eb;
+
+    margin-right:10px;
+
+}
+
+/* Hover */
+
+.custom-accordion .accordion-item{
+
+    transition:.25s;
+
+}
+
+.custom-accordion .accordion-item:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+    .main-content{
+
+        margin-left:0;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .help-header h2{
+
+        font-size:1.6rem;
+
+    }
+
+    .custom-accordion .accordion-button{
+
+        font-size:1rem;
+
+        padding:18px;
+
+    }
+
+    .custom-accordion .accordion-body{
+
+        padding:20px;
+
+    }
+
 }

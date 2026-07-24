@@ -1,54 +1,288 @@
-/* Personalización de la tabla */
-table {
-  width: 100%;
-  border-collapse: collapse;
+.main-content{
+    margin-left:170px;
+    padding:20px;
 }
 
-th, td {
-  padding: 15px 20px;
+/*==========================
+HEADER
+==========================*/
+
+.schedule-header{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:28px 35px;
+
+    margin-bottom:30px;
+
 }
 
-th {
-  background-color: #09519d; /* Color azul brillante para la cabecera */
-  color: white;
-  font-size: 20px;
+.schedule-header h2{
+
+    color:#1f2937;
+
+    font-size:2rem;
+
 }
 
-td {
-  background-color: #f8f9fa;
-  vertical-align: middle;
-  font-size: 18px;
+.schedule-header p{
+
+    font-size:1rem;
+
 }
 
-/* Mejoras en la tabla */
-.table-bordered {
-  border: 1px solid #dee2e6;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+/*==========================
+BADGE
+==========================*/
+
+.month-badge{
+
+    background:#eef5ff;
+
+    color:#0d6efd;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
 }
 
-.table-bordered th, .table-bordered td {
-  border: 1px solid #dee2e6;
+/*==========================
+CARD
+==========================*/
+
+.schedule-card{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
 }
 
-/* Estilos en el hover */
-.table-hover tbody tr:hover {
-  background-color: #e9ecef; /* Resaltado al pasar el mouse */
+/*==========================
+TABLA
+==========================*/
+
+.schedule-table{
+
+    border-collapse:separate;
+
+    border-spacing:0;
+
 }
 
-/* Estilos responsivos */
-.table-responsive {
-  overflow-x: auto; /* Permite el desplazamiento en pantallas pequeñas */
-  -webkit-overflow-scrolling: touch;
+.schedule-table thead th{
+
+    background:#0A7075;
+
+    color:white;
+
+    border:none;
+
+    font-size:19px;
+
+    font-weight:600;
+
+    padding:20px;
+
+    text-align:center;
+
 }
 
-/* Estilo para los mensajes de error */
-.text-danger {
-  color: #dc3545;
+.schedule-table tbody td{
+
+    padding:18px;
+
+    vertical-align:top;
+
+    border:1px solid #edf2f7;
+
+    background:white;
+
+    min-width:170px;
+
 }
 
-/* Mejorar la legibilidad */
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 90%;
+.schedule-table tbody tr:hover td{
+
+    background:#fafafa;
+
+}
+
+/*==========================
+COLUMNA HORA
+==========================*/
+
+.hora-column{
+
+    width:150px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    background:#f8fafc !important;
+
+    color:#374151;
+
+}
+
+/*==========================
+HORARIO
+==========================*/
+
+.schedule-item{
+
+    background:#eef8f8;
+
+    border-left:5px solid #0A7075;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    margin-bottom:10px;
+
+    transition:.25s;
+
+}
+
+.schedule-item:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+
+}
+
+.course{
+
+    color:#0A7075;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+.time{
+
+    color:#6b7280;
+
+    font-size:15px;
+
+}
+
+.time i{
+
+    margin-right:5px;
+
+}
+
+/*==========================
+SIN HORARIO
+==========================*/
+
+.empty-state{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:70px;
+
+    text-align:center;
+
+}
+
+.empty-state i{
+
+    font-size:80px;
+
+    color:#0A7075;
+
+    margin-bottom:20px;
+
+}
+
+.empty-state h3{
+
+    color:#374151;
+
+    margin-bottom:10px;
+
+}
+
+.empty-state p{
+
+    color:#6b7280;
+
+}
+
+/*==========================
+RESPONSIVE
+==========================*/
+
+@media(max-width:992px){
+
+    .main-content{
+
+        margin-left:0;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .schedule-header{
+
+        padding:22px;
+
+    }
+
+    .schedule-header h2{
+
+        font-size:1.6rem;
+
+    }
+
+    .month-badge{
+
+        margin-top:15px;
+
+    }
+
+    .hora-column{
+
+        width:120px;
+
+        font-size:16px;
+
+    }
+
+    .schedule-table thead th{
+
+        font-size:16px;
+
+        padding:14px;
+
+    }
+
+    .schedule-table tbody td{
+
+        min-width:180px;
+
+    }
+
 }

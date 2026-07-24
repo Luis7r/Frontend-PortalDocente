@@ -1,32 +1,40 @@
-import { HttpClient } from '@angular/common/http'; // Importación del cliente HTTP de Angular
-import { Injectable } from '@angular/core'; // Importación del decorador Injectable
-import { Observable } from 'rxjs'; // Importación de la clase Observable para manejar respuestas asíncronas
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // Añadimos HttpHeaders
+import { Injectable } from '@angular/core'; 
+import { Observable } from 'rxjs'; 
 
-// Interfaz que define la estructura de un objeto Curso
 export interface Curso {
-  id_curso: number; // Identificador único del curso
-  nombre_curso: string; // Nombre del curso
-  id_profesor: number; // Identificador del profesor que imparte el curso
-  nombre: string; // Nombre del profesor
-  apellido: string; // Apellido del profesor
+  id_curso: number;
+  nombre_curso: string;
+  id_profesor: number;
+  nombre: string;
+  apellido: string;
 }
 
 @Injectable({
-  providedIn: 'root' // Indica que este servicio se proporciona a nivel de raíz
+  providedIn: 'root'
 })
 export class CursosService {
-  private apiUrl = 'http://localhost:3000/api/cursos'; // URL base para la API de cursos
+  private apiUrl = 'http://localhost:3000/api/cursos'; 
 
-  constructor(private http: HttpClient) { } // Inyección del cliente HTTP en el constructor
+  constructor(private http: HttpClient) { } 
 
-  // Método para obtener todos los cursos
-  getCursos(): Observable<Curso[]> {
-    return this.http.get<Curso[]>(this.apiUrl); // Realiza una solicitud GET para obtener la lista de cursos
+  // Método privado para generar los headers con el token automáticamente
+  private createHeaders(): HttpHeaders {
+    const token = localStorage.getItem('authToken'); // Recuperamos el token guardado en el login
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Lo enviamos con el formato que espera el backend
+    });
   }
 
-  // Método para obtener cursos por ID de profesor
+  // Método para obtener todos los cursos (actualizado)
+  getCursos(): Observable<Curso[]> {
+    return this.http.get<Curso[]>(this.apiUrl, { headers: this.createHeaders() }); 
+  }
+
+  // Método para obtener cursos por ID de profesor (actualizado)
   getCursosByProfesor(id_profesor: number): Observable<Curso[]> {
-    const url = `${this.apiUrl}?id_profesor=${id_profesor}`; // Construye la URL con el parámetro id_profesor
-    return this.http.get<Curso[]>(url); // Realiza una solicitud GET para obtener los cursos del profesor específico
+    const url = `${this.apiUrl}?id_profesor=${id_profesor}`; 
+    // Agregamos { headers: ... } a la petición
+    return this.http.get<Curso[]>(url, { headers: this.createHeaders() }); 
   }
 }

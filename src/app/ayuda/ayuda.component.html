@@ -1,74 +1,183 @@
 <app-header></app-header>
-<body>
-  <div class="container my-5" style="padding-left: 100px;">
-      <h1 class="mb-4">Guía para Docentes</h1>
-      <div class="accordion" id="docenteAccordion">
-          <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      ¿Olvidó su contraseña?
-                  </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#docenteAccordion">
-                <div class="accordion-body">
-                  Si ha olvidado su contraseña, no se preocupe, es fácil recuperarla. Siga estos sencillos pasos:
-                  <ol>
-                      <li><strong>Visite su perfil.</strong></li>
-                      <li>Haga clic en el enlace "¿Olvidó su contraseña?" que se encuentra debajo del campo de entrada de contraseña.</li>
-                      <li>Ingrese la dirección de correo electrónico asociada a su cuenta y haga clic en "Enviar".</li>
-                      <li>Revise su correo electrónico. Recibirá un mensaje con instrucciones para restablecer su contraseña.</li>
-                      <li>Siga el enlace proporcionado en el correo y elija una nueva contraseña.</li>
-                  </ol>
-                  Si no recibe el correo, asegúrese de revisar su carpeta de spam o correo no deseado. Si tiene problemas adicionales, no dude en ponerse en contacto con nuestro equipo de soporte.
 
+<div class="main-content">
+  <div class="container py-5">
 
-                  </div>
-              </div>
+    <div class="help-header text-center mb-5">
+      <h2 class="fw-bold">
+        <i class="bi bi-question-circle me-2"></i>
+        Centro de Ayuda
+      </h2>
+      <p class="text-muted">
+        Encuentra respuestas a las preguntas más frecuentes sobre el Portal del Docente.
+      </p>
+    </div>
+
+    <div class="accordion custom-accordion" id="docenteAccordion">
+
+      <!-- Contraseña -->
+      <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne">
+
+            <i class="bi bi-key me-3"></i>
+
+            ¿Olvidó su contraseña?
+
+          </button>
+
+        </h2>
+
+        <div
+          id="collapseOne"
+          class="accordion-collapse collapse show"
+          data-bs-parent="#docenteAccordion">
+
+          <div class="accordion-body">
+
+            <p>
+              Si olvidó su contraseña, siga estos pasos:
+            </p>
+
+            <ol>
+              <li>Ingrese a su perfil.</li>
+              <li>Seleccione <strong>"¿Olvidó su contraseña?"</strong>.</li>
+              <li>Ingrese el correo asociado a su cuenta.</li>
+              <li>Revise su correo electrónico.</li>
+              <li>Acceda al enlace recibido y establezca una nueva contraseña.</li>
+            </ol>
+
+            <div class="info-box">
+
+              <i class="bi bi-info-circle"></i>
+
+              Revise también la carpeta de spam si no encuentra el correo.
+
+            </div>
+
           </div>
-          <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      ¿Tiene algún problema para subir las notas?
-                  </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#docenteAccordion">
-                  <div class="accordion-body">
 
-                      Si está teniendo problemas para subir las notas, aquí hay algunos pasos que puede seguir para solucionarlo:
-                      <ol>
-                          <li><strong>Verifique su conexión a Internet.</strong> Asegúrese de que está conectado a una red estable. Intente cargar otras páginas web para confirmar que su conexión está funcionando correctamente.</li>
-                          <li><strong>Actualice la página.</strong> A veces, simplemente refrescar la página puede resolver problemas temporales.</li>
-                          <li><strong>Borre la caché de su navegador.</strong> Esto puede ayudar a eliminar cualquier conflicto que pueda estar causando el problema.</li>
-                          <li><strong>Pruebe en otro navegador.</strong> Si el problema persiste, intente acceder a la plataforma desde un navegador diferente o en modo incógnito.</li>
-                          <li><strong>Verifique si hay actualizaciones disponibles.</strong> Asegúrese de que su navegador esté actualizado a la última versión.</li>
-                      </ol>
-                      Si después de seguir estos pasos sigue sin poder subir las notas, no dude en comunicarse con nuestro equipo de soporte para obtener ayuda adicional. Estamos aquí para ayudarle.
+        </div>
 
-
-                  </div>
-              </div>
-          </div>
-          <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Revisa nuestra guía de usuario
-                  </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#docenteAccordion">
-                  <div class="accordion-body">
-                      Bienvenido a la guía de usuario. A continuación, encontrará una breve descripción de los botones disponibles en nuestra plataforma:
-                      <ul>
-                          <li><strong>Cursos:</strong> Este botón le llevará a la sección donde puede ver todos los cursos disponibles, así como inscribirse en ellos y acceder a los materiales correspondientes.</li>
-                          <li><strong>Ayuda:</strong> Haga clic en este botón para acceder a la sección de ayuda, donde encontrará preguntas frecuentes y soluciones a problemas comunes.</li>
-                          <li><strong>Inicio:</strong> Este botón le llevará de vuelta a la página de inicio, donde podrá ver información general sobre la plataforma y acceder rápidamente a las diferentes secciones.</li>
-                          <li><strong>Perfil:</strong> Aquí puede gestionar su cuenta y ver su información personal, así como modificar sus preferencias y configuraciones.</li>
-                          <li><strong>Salir (Cerrar sesión):</strong> Use este botón para cerrar sesión en su cuenta de manera segura. Es recomendable cerrar sesión si está utilizando un dispositivo compartido.</li>
-                      </ul>
-                      Para obtener una comprensión más detallada de cómo usar la plataforma, le invitamos a ver nuestro video tutorial en YouTube: <a href="https://www.youtube.com/tu_video_tutorial" target="_blank">Guía de Usuario - Tutorial en Video</a>.
-
-                  </div>
-              </div>
-          </div>
       </div>
+
+      <!-- Notas -->
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo">
+
+            <i class="bi bi-journal-check me-3"></i>
+
+            Problemas al subir las notas
+
+          </button>
+
+        </h2>
+
+        <div
+          id="collapseTwo"
+          class="accordion-collapse collapse"
+          data-bs-parent="#docenteAccordion">
+
+          <div class="accordion-body">
+
+            <ol>
+
+              <li>Verifique su conexión a Internet.</li>
+
+              <li>Actualice la página.</li>
+
+              <li>Borre la caché del navegador.</li>
+
+              <li>Pruebe otro navegador.</li>
+
+              <li>Compruebe que el navegador esté actualizado.</li>
+
+            </ol>
+
+            <div class="info-box">
+
+              <i class="bi bi-lightbulb"></i>
+
+              Si el problema continúa, contacte al administrador del sistema.
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Guía -->
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseThree">
+
+            <i class="bi bi-book me-3"></i>
+
+            Guía de uso del sistema
+
+          </button>
+
+        </h2>
+
+        <div
+          id="collapseThree"
+          class="accordion-collapse collapse"
+          data-bs-parent="#docenteAccordion">
+
+          <div class="accordion-body">
+
+            <ul>
+
+              <li><strong>Cursos:</strong> Consulta tus cursos asignados.</li>
+
+              <li><strong>Horario:</strong> Visualiza tu horario semanal.</li>
+
+              <li><strong>Perfil:</strong> Actualiza tu información.</li>
+
+              <li><strong>Ayuda:</strong> Accede a preguntas frecuentes.</li>
+
+              <li><strong>Salir:</strong> Cierra la sesión de forma segura.</li>
+
+            </ul>
+
+            <div class="info-box">
+
+              <i class="bi bi-play-circle"></i>
+
+              Próximamente podrás consultar un video tutorial desde esta sección.
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
-</body>
+</div>

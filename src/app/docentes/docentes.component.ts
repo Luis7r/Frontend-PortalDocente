@@ -8,7 +8,7 @@ import { Docente, DocentesService } from './../services/docentes.service';
 @Component({
   selector: 'app-docentes',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BarraNavComponent],
+  imports: [ReactiveFormsModule, CommonModule,  BarraNavComponent],
   templateUrl: './docentes.component.html',
   styleUrls: ['./docentes.component.css']
 })

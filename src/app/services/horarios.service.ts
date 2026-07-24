@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // Añadimos HttpHeaders
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface Horario{
+export interface Horario {
   id_profesor: number;
   Dia: string;
   ID_Curso: number;
@@ -17,19 +17,27 @@ export class HorariosService {
 
   private apiUrl = 'http://localhost:3000/api/horarios'; // Asegúrate de que esta URL sea correcta
 
-  constructor(private http: HttpClient
+  constructor(private http: HttpClient) { }
 
-  ) { }
+  // Método privado para generar los headers con el token automáticamente
+  private createHeaders(): HttpHeaders {
+    const token = localStorage.getItem('authToken'); // Buscamos 'authToken' en el localStorage
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
 
-
+  // Método para obtener todos los horarios
   getHorarios(): Observable<Horario[]> {
-    return this.http.get<Horario[]>(this.apiUrl); // Realiza una solicitud GET para obtener los horarios
+    // Se agrega el token en las cabeceras como segundo parámetro
+    return this.http.get<Horario[]>(this.apiUrl, { headers: this.createHeaders() }); 
   }
 
+  // Método para obtener los horarios de un profesor específico
   getHorariosByProfesor(id_profesor: number): Observable<Horario[]> {
-    const url = `${this.apiUrl}?id_profesor=${id_profesor}`; // Construye la URL con el parámetro id_profesor
-    return this.http.get<Horario[]>(url); // Realiza una solicitud GET para obtener los horarios del profesor específico
+    const url = `${this.apiUrl}?id_profesor=${id_profesor}`; 
+    // Se agrega el token en las cabeceras como segundo parámetro
+    return this.http.get<Horario[]>(url, { headers: this.createHeaders() }); 
   }
-
 
 }
