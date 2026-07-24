@@ -5,35 +5,41 @@
   <div class="row">
     <!-- Formulario Apoderado -->
     <div class="col-md-6 mb-4">
-      <form (ngSubmit)="addApoderado()">
+      <form [formGroup]="apoderadoForm" (ngSubmit)="addApoderado()">
         <h2 class="text-center mb-4">Datos del Apoderado</h2>
         <div class="card p-4">
           <div class="form-group mb-3">
             <label for="dni">N° de DNI</label>
-            <input type="text" class="form-control" [(ngModel)]="newApoderado.dni" name="dni" placeholder="Ingrese su DNI">
+            <input type="text" class="form-control" formControlName="dni" placeholder="Ingrese su DNI">
+            <small *ngIf="apoderadoForm.get('dni')?.touched && apoderadoForm.get('dni')?.invalid" class="text-danger">{{ getValidationMessage('apoderado','dni') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="nombres">Nombres</label>
-            <input type="text" class="form-control" [(ngModel)]="newApoderado.nombre" name="nombre" placeholder="Ingrese sus nombres">
+            <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese sus nombres">
+            <small *ngIf="apoderadoForm.get('nombre')?.touched && apoderadoForm.get('nombre')?.invalid" class="text-danger">{{ getValidationMessage('apoderado','nombre') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="apellidos">Apellidos</label>
-            <input type="text" class="form-control" [(ngModel)]="newApoderado.apellido" name="apellido" placeholder="Ingrese sus apellidos">
+            <input type="text" class="form-control" formControlName="apellido" placeholder="Ingrese sus apellidos">
+            <small *ngIf="apoderadoForm.get('apellido')?.touched && apoderadoForm.get('apellido')?.invalid" class="text-danger">{{ getValidationMessage('apoderado','apellido') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="email">Correo Electrónico</label>
-            <input type="email" class="form-control" [(ngModel)]="newApoderado.email" name="email" placeholder="Ingrese su correo electrónico">
+            <input type="email" class="form-control" formControlName="email" placeholder="Ingrese su correo electrónico">
+            <small *ngIf="apoderadoForm.get('email')?.touched && apoderadoForm.get('email')?.invalid" class="text-danger">{{ getValidationMessage('apoderado','email') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="celular">N° de Celular</label>
-            <input type="tel" class="form-control" [(ngModel)]="newApoderado.celular" name="celular" placeholder="Ingrese su número de celular">
+            <input type="tel" class="form-control" formControlName="celular" placeholder="Ingrese su número de celular">
+            <small *ngIf="apoderadoForm.get('celular')?.touched && apoderadoForm.get('celular')?.invalid" class="text-danger">{{ getValidationMessage('apoderado','celular') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" [(ngModel)]="newApoderado.direccion" name="direccion" placeholder="Ingrese su dirección">
+            <input type="text" class="form-control" formControlName="direccion" placeholder="Ingrese su dirección">
+            <small *ngIf="apoderadoForm.get('direccion')?.touched && apoderadoForm.get('direccion')?.invalid" class="text-danger">{{ getValidationMessage('apoderado','direccion') }}</small>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="apoderadoForm.invalid">Enviar</button>
           </div>
         </div>
       </form>
@@ -41,24 +47,27 @@
 
     <!-- Formulario Estudiante -->
     <div class="col-md-6 mb-4">
-      <form (ngSubmit)="addNewEstudiante()">
+      <form [formGroup]="estudianteForm" (ngSubmit)="addNewEstudiante()">
         <h2 class="text-center mb-4">Datos del Estudiante</h2>
         <div class="card p-4">
           <div class="form-group mb-3">
             <label for="dni">N° de DNI</label>
-            <input type="text" class="form-control" [(ngModel)]="NewEstudiante.dni" name="dni" placeholder="Ingrese su DNI" required>
+            <input type="text" class="form-control" formControlName="dni" placeholder="Ingrese su DNI">
+            <small *ngIf="estudianteForm.get('dni')?.touched && estudianteForm.get('dni')?.invalid" class="text-danger">{{ getValidationMessage('estudiante','dni') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="nombresEstudiante">Nombres</label>
-            <input type="text" class="form-control" [(ngModel)]="NewEstudiante.nombre" name="nombre" placeholder="Ingrese sus nombres" required>
+            <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese sus nombres">
+            <small *ngIf="estudianteForm.get('nombre')?.touched && estudianteForm.get('nombre')?.invalid" class="text-danger">{{ getValidationMessage('estudiante','nombre') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="apellidosEstudiante">Apellidos</label>
-            <input type="text" class="form-control" [(ngModel)]="NewEstudiante.apellido" name="apellido" placeholder="Ingrese sus apellidos" required>
+            <input type="text" class="form-control" formControlName="apellido" placeholder="Ingrese sus apellidos">
+            <small *ngIf="estudianteForm.get('apellido')?.touched && estudianteForm.get('apellido')?.invalid" class="text-danger">{{ getValidationMessage('estudiante','apellido') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="grado">Grado</label>
-            <select class="form-select" [(ngModel)]="selectedGrado" (change)="onGradoChange()" name="grado" required>
+            <select class="form-select" [(ngModel)]="selectedGrado" (change)="onGradoChange()" formControlName="grado" name="grado">
               <option value="" disabled selected>Seleccione un grado</option>
               <option value="1">1° secundaria</option>
               <option value="2">2° secundaria</option>
@@ -66,13 +75,14 @@
               <option value="4">4° secundaria</option>
               <option value="5">5° secundaria</option>
             </select>
+            <small *ngIf="estudianteForm.get('grado')?.touched && estudianteForm.get('grado')?.invalid" class="text-danger">{{ getValidationMessage('estudiante','grado') }}</small>
           </div>
           <div class="form-group mb-3">
             <label for="vacantes">Vacantes</label>
             <input type="text" class="form-control" placeholder="{{vacantes}}" readonly>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="estudianteForm.invalid">Enviar</button>
           </div>
         </div>
       </form>

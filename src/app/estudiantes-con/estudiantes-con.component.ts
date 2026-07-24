@@ -1,6 +1,6 @@
 import { CommonModule, NgFor } from '@angular/common'; // Importar módulos comunes para el componente
 import { Component, OnInit } from '@angular/core'; // Importar el decorador Component y el ciclo de vida OnInit
-import { FormsModule } from '@angular/forms'; // Importar el módulo de formularios para manejar formularios en el componente
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'; // Importar el módulo de formularios para manejar formularios en el componente
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Importar el módulo para usar modales de Bootstrap
 import { BarraNavComponent } from '../barraNav/barraNav.component'; // Importar el componente de barra de navegación
 import { Estudiante, EstudiantesService } from '../services/estudiantes.service'; // Importar modelo y servicio para gestionar estudiantes
@@ -8,12 +8,13 @@ import { Estudiante, EstudiantesService } from '../services/estudiantes.service'
 import { NewEstudiante, NewestudianteService } from '../services/newestudiante.service'; // Importar servicio para agregar nuevos estudiantes
 import { Apoderado, ApoderadosService } from './../services/apoderados.service'; // Importar modelo y servicio para gestionar apoderados
 import { Vacantes, VacantesService } from './../services/vacantes.service'; // Importar modelo y servicio para gestionar vacantes
+import { CustomValidators } from '../validators/custom-validators';
 declare var bootstrap: any; // Declarar la variable bootstrap para usar funciones de Bootstrap
 
 @Component({
     selector: 'app-estudiantes-con', // Selector del componente
     standalone: true, // El componente es independiente
-    imports: [CommonModule, NgFor, FormsModule, BarraNavComponent], // Importar módulos y componentes necesarios
+    imports: [CommonModule, NgFor, FormsModule, ReactiveFormsModule, BarraNavComponent], // Importar módulos y componentes necesarios
     templateUrl: './estudiantes-con.component.html', // Ruta a la plantilla HTML del componente
     styleUrls: ['./estudiantes-con.component.css'] // Ruta a los estilos CSS del componente
 })
@@ -28,6 +29,8 @@ export class EstudiantesComponent implements OnInit { // Clase del componente
     vacantes: number = 0; // Variable para almacenar el número total de vacantes
     selectedGrado: number = 1; // Variable para almacenar el grado seleccionado
     allVacantes: Vacantes = []; // Almacena todas las vacantes disponibles
+    estudianteForm: FormGroup;
+    apoderadoForm: FormGroup;
 
     constructor(
         private estudiantesService: EstudiantesService, // Servicio para gestionar estudiantes
@@ -36,11 +39,38 @@ export class EstudiantesComponent implements OnInit { // Clase del componente
         private apoderadoService: ApoderadosService, // Servicio para gestionar apoderados
         private newestudiante: NewestudianteService, // Servicio para crear nuevos estudiantes
         private modalService: NgbModal, // Servicio para gestionar modales
-    ) { }
+        private fb: FormBuilder,
+    ) {
+        this.estudianteForm = this.fb.group({
+            dni: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), CustomValidators.onlyNumbers]],
+            nombre: ['', [Validators.required, CustomValidators.onlyLetters]],
+            apellido: ['', [Validators.required, CustomValidators.onlyLetters]],
+            grado: ['', Validators.required],
+        });
+
+        this.apoderadoForm = this.fb.group({
+            dni: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), CustomValidators.onlyNumbers]],
+            nombre: ['', [Validators.required, CustomValidators.onlyLetters]],
+            apellido: ['', [Validators.required, CustomValidators.onlyLetters]],
+            email: ['', [Validators.required, Validators.email]],
+            celular: ['', [Validators.required, Validators.pattern(/^9\d{8}$/), CustomValidators.nonNegative]],
+            direccion: ['', Validators.required],
+        });
+    }
 
     ngOnInit(): void {
         this.loadEstudiantes(); // Cargar estudiantes al iniciar el componente
         this.loadVacantes(); // Cargar vacantes al iniciar el componente
+        this.registerValidationMessages();
+    }
+
+    registerValidationMessages(): void {
+        Object.keys(this.estudianteForm.controls).forEach(field => {
+            this.estudianteForm.get(field)?.statusChanges.subscribe(() => this.getValidationMessage('estudiante', field));
+        });
+        Object.keys(this.apoderadoForm.controls).forEach(field => {
+            this.apoderadoForm.get(field)?.statusChanges.subscribe(() => this.getValidationMessage('apoderado', field));
+        });
     }
 
     // Cargar todos los estudiantes desde la base de datos
@@ -83,11 +113,23 @@ export class EstudiantesComponent implements OnInit { // Clase del componente
 
     // Método para agregar un nuevo estudiante
     addNewEstudiante(): void {
+        if (this.estudianteForm.invalid) {
+            this.estudianteForm.markAllAsTouched();
+            return;
+        }
+
+        this.NewEstudiante = {
+            ...this.NewEstudiante,
+            dni: this.estudianteForm.value.dni,
+            nombre: this.estudianteForm.value.nombre,
+            apellido: this.estudianteForm.value.apellido,
+        };
         this.NewEstudiante.id_grado = this.selectedGrado; // Asignar el grado seleccionado al nuevo estudiante
         this.newestudiante.addNewEstudiante(this.NewEstudiante).subscribe(
             response => {
                 console.log('Estudiante agregado:', response); // Log para confirmar la adición
                 this.NewEstudiante = this.initNewEstudiante(); // Reinicia el formulario de entrada
+                this.estudianteForm.reset();
             },
             error => {
                 console.error('Error al agregar estudiante:', error);
@@ -123,9 +165,20 @@ export class EstudiantesComponent implements OnInit { // Clase del componente
 
     // Método para agregar un nuevo apoderado
     addApoderado(): void {
+        if (this.apoderadoForm.invalid) {
+            this.apoderadoForm.markAllAsTouched();
+            return;
+        }
+
+        this.newApoderado = {
+            ...this.newApoderado,
+            ...this.apoderadoForm.value,
+        };
+
         this.apoderadoService.addApoderado(this.newApoderado).subscribe(
             response => {
                 this.newApoderado = this.initNewApoderado(); // Reinicia el formulario de entrada
+                this.apoderadoForm.reset();
                 this.errorMessage = null; // Limpia el mensaje de error
                 // Asignar el id_apoderado del apoderado recién agregado al nuevo estudiante
                 this.NewEstudiante.id_apoderado = response.id_apoderado; // Asegúrate de que este campo esté presente en la respuesta
@@ -139,6 +192,8 @@ export class EstudiantesComponent implements OnInit { // Clase del componente
 
     // Método que se llama cuando cambia el grado seleccionado
     onGradoChange(): void {
+        const grado = this.estudianteForm.get('grado')?.value;
+        this.selectedGrado = grado ? Number(grado) : 1;
         this.loadVacantes(); // Recarga las vacantes al cambiar el grado
     }
 
@@ -175,5 +230,38 @@ export class EstudiantesComponent implements OnInit { // Clase del componente
             const modal = new bootstrap.Modal(modalElement); // Crear una nueva instancia de modal
             modal.show(); // Mostrar el modal
         }
+    }
+
+    getValidationMessage(formType: 'apoderado' | 'estudiante', field: string): string {
+        const form = formType === 'apoderado' ? this.apoderadoForm : this.estudianteForm;
+        const control = form.get(field);
+
+        if (!control || !control.errors) {
+            return '';
+        }
+
+        if (control.errors['required']) {
+            return 'Este campo es obligatorio.';
+        }
+        if (control.errors['minlength'] || control.errors['maxlength']) {
+            return 'Debe tener 8 caracteres.';
+        }
+        if (control.errors['onlyNumbers']) {
+            return 'Solo se permiten números.';
+        }
+        if (control.errors['onlyLetters']) {
+            return 'Solo se permiten letras.';
+        }
+        if (control.errors['nonNegative']) {
+            return 'No se permiten valores negativos.';
+        }
+        if (control.errors['pattern']) {
+            return 'Debe tener 9 dígitos y comenzar con 9.';
+        }
+        if (control.errors['email']) {
+            return 'Ingrese un correo válido.';
+        }
+
+        return '';
     }
 }

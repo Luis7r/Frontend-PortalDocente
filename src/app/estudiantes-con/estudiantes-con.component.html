@@ -70,26 +70,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="addNewEstudiante()" #estudianteForm="ngForm">
+        <form [formGroup]="estudianteForm" (ngSubmit)="addNewEstudiante()">
           <div class="form-group mb-3">
             <label for="dni">N° de DNI</label>
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="NewEstudiante.dni"
-              name="dni"
+              formControlName="dni"
               placeholder="Ingrese su DNI"
-              required
-              minlength="8"
-              maxlength="8"
-              pattern="^[0-9]+$"
-              #dni="ngModel"
             />
-            <div *ngIf="dni.invalid && (dni.dirty || dni.touched)" class="text-danger">
-              <small *ngIf="dni.errors?.['required']">El DNI es obligatorio.</small>
-              <small *ngIf="dni.errors?.['minlength']">El DNI debe tener 8 caracteres.</small>
-              <small *ngIf="dni.errors?.['maxlength']">El DNI debe tener 8 caracteres.</small>
-              <small *ngIf="dni.errors?.['pattern']">El DNI debe ser un número.</small>
+            <div *ngIf="estudianteForm.get('dni')?.invalid && (estudianteForm.get('dni')?.dirty || estudianteForm.get('dni')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('estudiante', 'dni') }}</small>
             </div>
           </div>
 
@@ -98,14 +89,11 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="NewEstudiante.nombre"
-              name="nombre"
+              formControlName="nombre"
               placeholder="Ingrese sus nombres"
-              required
-              #nombres="ngModel"
             />
-            <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="text-danger">
-              <small *ngIf="nombres.errors?.['required']">El nombre es obligatorio.</small>
+            <div *ngIf="estudianteForm.get('nombre')?.invalid && (estudianteForm.get('nombre')?.dirty || estudianteForm.get('nombre')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('estudiante', 'nombre') }}</small>
             </div>
           </div>
 
@@ -114,14 +102,11 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="NewEstudiante.apellido"
-              name="apellido"
+              formControlName="apellido"
               placeholder="Ingrese sus apellidos"
-              required
-              #apellidos="ngModel"
             />
-            <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)" class="text-danger">
-              <small *ngIf="apellidos.errors?.['required']">El apellido es obligatorio.</small>
+            <div *ngIf="estudianteForm.get('apellido')?.invalid && (estudianteForm.get('apellido')?.dirty || estudianteForm.get('apellido')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('estudiante', 'apellido') }}</small>
             </div>
           </div>
 
@@ -129,11 +114,8 @@
             <label for="grado">Grado</label>
             <select
               class="form-select"
-              [(ngModel)]="selectedGrado"
+              formControlName="grado"
               (change)="onGradoChange()"
-              name="grado"
-              required
-              #grado="ngModel"
             >
               <option value="" disabled selected>Seleccione un grado</option>
               <option value="1">1° secundaria</option>
@@ -142,8 +124,8 @@
               <option value="4">4° secundaria</option>
               <option value="5">5° secundaria</option>
             </select>
-            <div *ngIf="grado.invalid && (grado.dirty || grado.touched)" class="text-danger">
-              <small *ngIf="grado.errors?.['required']">El grado es obligatorio.</small>
+            <div *ngIf="estudianteForm.get('grado')?.invalid && (estudianteForm.get('grado')?.dirty || estudianteForm.get('grado')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('estudiante', 'grado') }}</small>
             </div>
           </div>
 
@@ -171,26 +153,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="addApoderado()" #apoderadoForm="ngForm">
+        <form [formGroup]="apoderadoForm" (ngSubmit)="addApoderado()">
           <div class="form-group mb-3">
             <label for="dni">N° de DNI</label>
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="newApoderado.dni"
-              name="dni"
+              formControlName="dni"
               placeholder="Ingrese su DNI"
-              required
-              minlength="8"
-              maxlength="8"
-              pattern="^[0-9]+$"
-              #dniA="ngModel"
             />
-            <div *ngIf="dniA.invalid && (dniA.dirty || dniA.touched)" class="text-danger">
-              <small *ngIf="dniA.errors?.['required']">El DNI es obligatorio.</small>
-              <small *ngIf="dniA.errors?.['minlength']">El DNI debe tener 8 caracteres.</small>
-              <small *ngIf="dniA.errors?.['maxlength']">El DNI debe tener 8 caracteres.</small>
-              <small *ngIf="dniA.errors?.['pattern']">El DNI debe ser un número.</small>
+            <div *ngIf="apoderadoForm.get('dni')?.invalid && (apoderadoForm.get('dni')?.dirty || apoderadoForm.get('dni')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('apoderado', 'dni') }}</small>
             </div>
           </div>
 
@@ -199,14 +172,11 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="newApoderado.nombre"
-              name="nombre"
+              formControlName="nombre"
               placeholder="Ingrese sus nombres"
-              required
-              #nombresA="ngModel"
             />
-            <div *ngIf="nombresA.invalid && (nombresA.dirty || nombresA.touched)" class="text-danger">
-              <small *ngIf="nombresA.errors?.['required']">El nombre es obligatorio.</small>
+            <div *ngIf="apoderadoForm.get('nombre')?.invalid && (apoderadoForm.get('nombre')?.dirty || apoderadoForm.get('nombre')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('apoderado', 'nombre') }}</small>
             </div>
           </div>
 
@@ -215,14 +185,11 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="newApoderado.apellido"
-              name="apellido"
+              formControlName="apellido"
               placeholder="Ingrese sus apellidos"
-              required
-              #apellidosA="ngModel"
             />
-            <div *ngIf="apellidosA.invalid && (apellidosA.dirty || apellidosA.touched)" class="text-danger">
-              <small *ngIf="apellidosA.errors?.['required']">El apellido es obligatorio.</small>
+            <div *ngIf="apoderadoForm.get('apellido')?.invalid && (apoderadoForm.get('apellido')?.dirty || apoderadoForm.get('apellido')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('apoderado', 'apellido') }}</small>
             </div>
           </div>
 
@@ -231,15 +198,11 @@
             <input
               type="email"
               class="form-control"
-              [(ngModel)]="newApoderado.email"
-              name="email"
+              formControlName="email"
               placeholder="Ingrese su correo electrónico"
-              required
-              #emailA="ngModel"
             />
-            <div *ngIf="emailA.invalid && (emailA.dirty || emailA.touched)" class="text-danger">
-              <small *ngIf="emailA.errors?.['required']">El correo electrónico es obligatorio.</small>
-              <small *ngIf="emailA.errors?.['email']">El correo electrónico no es válido.</small>
+            <div *ngIf="apoderadoForm.get('email')?.invalid && (apoderadoForm.get('email')?.dirty || apoderadoForm.get('email')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('apoderado', 'email') }}</small>
             </div>
           </div>
 
@@ -248,16 +211,11 @@
             <input
               type="tel"
               class="form-control"
-              [(ngModel)]="newApoderado.celular"
-              name="celular"
+              formControlName="celular"
               placeholder="Ingrese su número de celular"
-              required
-              pattern="^[0-9]{9}$"
-              #celularA="ngModel"
             />
-            <div *ngIf="celularA.invalid && (celularA.dirty || celularA.touched)" class="text-danger">
-              <small *ngIf="celularA.errors?.['required']">El número de celular es obligatorio.</small>
-              <small *ngIf="celularA.errors?.['pattern']">El número de celular debe ser un número de 9 dígitos.</small>
+            <div *ngIf="apoderadoForm.get('celular')?.invalid && (apoderadoForm.get('celular')?.dirty || apoderadoForm.get('celular')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('apoderado', 'celular') }}</small>
             </div>
           </div>
 
@@ -266,14 +224,11 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="newApoderado.direccion"
-              name="direccion"
+              formControlName="direccion"
               placeholder="Ingrese su dirección"
-              required
-              #direccionA="ngModel"
             />
-            <div *ngIf="direccionA.invalid && (direccionA.dirty || direccionA.touched)" class="text-danger">
-              <small *ngIf="direccionA.errors?.['required']">La dirección es obligatoria.</small>
+            <div *ngIf="apoderadoForm.get('direccion')?.invalid && (apoderadoForm.get('direccion')?.dirty || apoderadoForm.get('direccion')?.touched)" class="text-danger">
+              <small>{{ getValidationMessage('apoderado', 'direccion') }}</small>
             </div>
           </div>
 

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BarraNavComponent } from '../barraNav/barraNav.component';
 import { Docente, DocentesService } from './../services/docentes.service';
+import { CustomValidators } from '../validators/custom-validators';
 
 @Component({
   selector: 'app-docentes',
@@ -28,12 +29,12 @@ export class DocentesComponent implements OnInit {
 
 
     this.docenteForm = this.fb.group({
-      dni: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      profesion: ['', Validators.required],
-      num_cursos: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
-      celular: ['', [Validators.required, Validators.pattern(/^9\d{8}$/)]],
+      dni: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), CustomValidators.onlyNumbers, CustomValidators.nonNegative]],
+      nombre: ['', [Validators.required, CustomValidators.onlyLetters]],
+      apellido: ['', [Validators.required, CustomValidators.onlyLetters]],
+      profesion: ['', [Validators.required, CustomValidators.onlyLetters]],
+      num_cursos: ['', [Validators.required, CustomValidators.onlyNumbers, CustomValidators.nonNegative]],
+      celular: ['', [Validators.required, Validators.pattern(/^9\d{8}$/), CustomValidators.onlyNumbers, CustomValidators.nonNegative]],
       codigo_docente: ['', Validators.required],
       usuario: ['', [Validators.required, Validators.email]],
       contrasena: ['', Validators.required]
@@ -90,27 +91,24 @@ export class DocentesComponent implements OnInit {
       if (control.errors['required']) {
         return 'Este campo es obligatorio.';
       }
-      if (control.errors['pattern']) {
+      if (control.errors['minlength'] || control.errors['maxlength']) {
         if (field === 'dni') {
-
-          if (control.value && /[^0-9]/.test(control.value)) {
-            return 'El DNI solo puede contener números.';
-          }
           return 'El DNI debe tener exactamente 8 dígitos.';
-
         }
-        if (field === 'num_cursos') {
-          if (control.value && /[^0-9]/.test(control.value)) {
-            return 'Solo se aceptan números.';
-          }
-          return 'Ingrese un número valido.';
-        }
+      }
+      if (control.errors['pattern']) {
         if (field === 'celular') {
-          if (control.value && /[^0-9]/.test(control.value)) {
-            return 'Solo se aceptan números.';
-          }
-          return 'El número de celular debe tener 9 dígitos.';
+          return 'El número de celular debe tener 9 dígitos y comenzar con 9.';
         }
+      }
+      if (control.errors['onlyNumbers']) {
+        return 'Solo se aceptan números.';
+      }
+      if (control.errors['onlyLetters']) {
+        return 'Solo se aceptan letras.';
+      }
+      if (control.errors['nonNegative']) {
+        return 'No se permiten valores negativos.';
       }
       if (control.errors['email']) {
         return 'Debe ingresar un correo electrónico válido.';
