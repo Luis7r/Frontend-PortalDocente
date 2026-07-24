@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { API_URL } from '../config/api';
 
 export interface User {
   nombre: string;
@@ -15,7 +16,7 @@ export interface User {
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:3000/api/login';
+  private apiUrl = `${API_URL}/login`;
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
 

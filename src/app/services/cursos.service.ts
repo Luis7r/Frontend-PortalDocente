@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // Añadimos HttpHeaders
 import { Injectable } from '@angular/core'; 
 import { Observable } from 'rxjs'; 
+import { API_URL } from '../config/api';
 
 export interface Curso {
   id_curso: number;
@@ -14,7 +15,7 @@ export interface Curso {
   providedIn: 'root'
 })
 export class CursosService {
-  private apiUrl = 'http://localhost:3000/api/cursos'; 
+  private apiUrl = `${API_URL}/cursos`;
 
   constructor(private http: HttpClient) { } 
 

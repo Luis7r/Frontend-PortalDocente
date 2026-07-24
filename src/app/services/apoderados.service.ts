@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'; // Importación del cliente HTTP de Angular
 import { Injectable } from '@angular/core'; // Importación del decorador Injectable
 import { Observable } from 'rxjs'; // Importación de la clase Observable para manejar respuestas asíncronas
+import { API_URL } from '../config/api';
 
 // Interfaz que define la estructura de un objeto Apoderado
 export interface Apoderado {
@@ -17,7 +18,7 @@ export interface Apoderado {
   providedIn: 'root' // Indica que este servicio se proporciona a nivel de raíz
 })
 export class ApoderadosService {
-  private apiUrl = 'http://localhost:3000/api/apoderados'; // URL base para la API de apoderados (modificar según sea necesario)
+  private apiUrl = `${API_URL}/apoderados`; // URL base para la API de apoderados (modificar según sea necesario)
 
   constructor(private http: HttpClient) {} // Inyección del cliente HTTP en el constructor
 

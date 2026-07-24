@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // Añadimos HttpHeaders
 import { Injectable } from '@angular/core'; 
 import { Observable } from 'rxjs'; 
+import { API_URL } from '../config/api';
 
 // Interfaz que define la estructura de un objeto DetalleCurso
 export interface DetalleCurso {
@@ -19,7 +20,7 @@ export interface DetalleCurso {
   providedIn: 'root' 
 })
 export class DetallecursoService {
-  private apiUrl = 'http://localhost:3000/api/detallecurso'; 
+ private apiUrl = `${API_URL}/detallecurso`;
 
   constructor(private http: HttpClient) {} 
 

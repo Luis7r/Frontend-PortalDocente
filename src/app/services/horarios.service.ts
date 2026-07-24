@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // Añadimos HttpHeaders
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { API_URL } from '../config/api';
 export interface Horario {
   id_profesor: number;
   Dia: string;
@@ -15,7 +15,7 @@ export interface Horario {
 })
 export class HorariosService {
 
-  private apiUrl = 'http://localhost:3000/api/horarios'; // Asegúrate de que esta URL sea correcta
+  private apiUrl = `${API_URL}/horarios`; // Asegúrate de que esta URL sea correcta
 
   constructor(private http: HttpClient) { }
 

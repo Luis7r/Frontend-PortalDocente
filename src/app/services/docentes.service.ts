@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http'; // Importación del cliente HTTP de Angular
 import { Injectable } from '@angular/core'; // Importación del decorador Injectable
 import { Observable } from 'rxjs'; // Importación de la clase Observable para manejar respuestas asíncronas
+import { API_URL } from '../config/api'; 
+
 
 // Interfaz que define la estructura de un objeto Docente
 export interface Docente {
@@ -20,7 +22,7 @@ export interface Docente {
   providedIn: 'root'
 })
 export class DocentesService {
-  private apiUrl = 'http://localhost:3000/api/docentes'; // URL base para la API de docentes
+  private apiUrl = `${API_URL}/docentes`; // URL base para la API de docentes
 
   constructor(private http: HttpClient) { }
 

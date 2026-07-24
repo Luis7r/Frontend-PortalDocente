@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { API_URL } from '../config/api';
 
 // Interfaz que define la estructura de un nuevo estudiante
 export interface NewEstudiante {
@@ -16,7 +17,7 @@ export interface NewEstudiante {
   providedIn: 'root'
 })
 export class NewestudianteService {
-  private apiUrl = 'http://localhost:3000/api/newestudiantes'; // URL de la API
+  private apiUrl = `${API_URL}/newestudiantes`; // URL de la API
 
   constructor(private http: HttpClient) { }
 

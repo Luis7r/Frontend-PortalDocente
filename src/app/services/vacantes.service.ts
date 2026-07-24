@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { API_URL } from '../config/api';
 
 export interface Vacante {
   vacantes: number; // Número de vacantes para un grado
@@ -12,7 +13,7 @@ export type Vacantes = Vacante[]; // Array de objetos Vacante (vacantes por grad
   providedIn: 'root'
 })
 export class VacantesService {
-  private apiUrl = 'http://localhost:3000/api/vacante';
+  private apiUrl = `${API_URL}/vacante`;
 
   constructor(private http: HttpClient) { }
 
