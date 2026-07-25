@@ -64,6 +64,19 @@
           <!-- Espaciador flexible para empujar el perfil a la derecha -->
           <div class="flex-grow-1"></div>
 
+          <!-- Controles de accesibilidad: tema y tamaño de letra -->
+          <div class="accessibility-controls d-flex align-items-center me-3">
+            <button class="btn btn-sm btn-outline-secondary me-2" (click)="toggleTheme()" [attr.title]="theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'">
+              <i class="bi" [ngClass]="theme === 'light' ? 'bi-moon' : 'bi-sun'"></i>
+            </button>
+
+            <div class="btn-group btn-group-sm" role="group" aria-label="Tamaño de fuente">
+              <button class="btn btn-outline-secondary" (click)="decreaseFont()" title="Disminuir fuente">A-</button>
+              <button class="btn btn-outline-secondary" (click)="resetFont()" title="Restablecer fuente">A</button>
+              <button class="btn btn-outline-secondary" (click)="increaseFont()" title="Aumentar fuente">A+</button>
+            </div>
+          </div>
+
           <!-- Perfil de Usuario -->
           <a class="text-decoration-none user-profile" routerLink="/perfil">
             <div class="d-flex align-items-center">

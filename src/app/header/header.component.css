@@ -237,6 +237,21 @@ PERFIL
 
 }
 
+/* Estilos para controles de accesibilidad (tema y tamaño) */
+.accessibility-controls .btn{
+  border-radius:8px;
+  padding:6px 8px;
+}
+
+.accessibility-controls .btn i{
+  font-size:18px;
+}
+
+.accessibility-controls .btn-group .btn{
+  min-width:38px;
+  padding:6px 8px;
+}
+
 /*=====================================
 MODAL
 =====================================*/
